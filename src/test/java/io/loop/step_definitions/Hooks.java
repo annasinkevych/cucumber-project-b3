@@ -9,8 +9,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
-
-    @Before
+//the point of Hooks class is to getDriver and close Driver
+    @Before //this tag says when anything Cucumber related runs, it triggers Hook this will run
     public void setUp(Scenario scenario) {
         Driver.getDriver();
         BrowserUtils.myScenario = scenario;

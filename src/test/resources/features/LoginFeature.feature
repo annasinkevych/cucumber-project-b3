@@ -1,7 +1,6 @@
 Feature: Docuport Login Logout Feature
 
-
- @smoke
+  @smoke
  Scenario: Login as a client
    Given user is on Docuport login page
    When user enters username fir client
@@ -16,3 +15,4 @@ Feature: Docuport Login Logout Feature
     And user enters password for employee
     And user clicks login button
     Then user should see the home page for employee
+    And user is crazy

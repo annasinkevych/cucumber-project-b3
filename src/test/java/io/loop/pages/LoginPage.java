@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
+    //this is our POM - Project Object Model design pattern
     public LoginPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -19,6 +20,5 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
-
 
 }

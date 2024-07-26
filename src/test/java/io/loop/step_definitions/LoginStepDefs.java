@@ -1,5 +1,6 @@
 package io.loop.step_definitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -39,7 +40,6 @@ public class LoginStepDefs {
 
     }
 
-
     @When("user enters username for employee")
     public void user_enters_username_for_employee() {
     }
@@ -52,4 +52,7 @@ public class LoginStepDefs {
 
     }
 
+    @And("user is crazy")
+    public void userIsCrazy() {
+    }
 }
