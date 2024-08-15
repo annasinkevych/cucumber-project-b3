@@ -99,7 +99,7 @@ public class PageElementUtils {
         //by sending keys we can make those options that are hidden and need to be scrolled down to - visible
         dropDown.sendKeys(value);
         List<WebElement> options = Driver.getDriver().findElements(By.xpath("//div[@class= 'v-list-item__title']/span | //span[.='"+ value + "']"));
-        options.getFirst().click();
+        //options.getFirst().click();
     }
 
 

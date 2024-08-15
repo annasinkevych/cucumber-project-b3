@@ -1,5 +1,7 @@
 package io.loop.pages;
 
+import io.loop.utilities.BrowserUtils;
+import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,5 +22,29 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
+
+    @FindBy(xpath = "//button[@type='submit']//span")
+    public WebElement submitButton;
+
+    /**
+     *
+     * @param username
+     * @param password
+     */
+    public void logInDocuport(String username, String password) {
+       //explicit wait
+        BrowserUtils.waitForVisibility(usernameInput, DocuportConstants.small);
+        usernameInput.clear();
+        usernameInput.sendKeys(username);
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
+        loginButton.click();
+        if(BrowserUtils.waitForVisibility(submitButton, DocuportConstants.small).isDisplayed());
+        {
+            submitButton.click();
+        }
+
+
+    }
 
 }
