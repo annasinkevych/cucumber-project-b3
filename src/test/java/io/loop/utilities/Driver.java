@@ -10,7 +10,7 @@ import java.time.Duration;
 
 public class Driver {
 
-    /*
+/*
     Creating the private constructor so this class's object is not reachable from outside
      */
 
@@ -21,7 +21,9 @@ public class Driver {
     static - run before everything else and use ins static method
      */
 
-    private static WebDriver driver;
+    //private static WebDriver driver;
+    // implement threadLocal to achieve multi thread locally
+    private static InheritableThreadLocal <WebDriver> driverPool = new InheritableThreadLocal<>();
 
     /*
     reusable method that will return the same driver instance everytime called
@@ -29,39 +31,42 @@ public class Driver {
 
     /**
      * singleton patter
+     * author anna
      * @return
      */
     public static WebDriver getDriver(){
-        if(driver==null){
+        if(driverPool.get()==null){
             String browserType = ConfigurationReader.getProperties("browser");
             switch (browserType.toLowerCase()){
                 case "chrome":
-                    ChromeOptions options = new ChromeOptions();
-                    options.addArguments("--incognito");
-                    driver = new ChromeDriver(options);
+                    driverPool.set(new ChromeDriver());
                     break;
                 case "firefox":
-                    driver = new FirefoxDriver();
+                    driverPool.set(new FirefoxDriver());
                     break;
                 case "safari":
-                    driver = new SafariDriver();
+                    driverPool.set(new SafariDriver());
                     break;
+                case "headless": //it will still run but will not open Chrome
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments("--headless");
+                    driverPool.set(new ChromeDriver(options));
             }
-            driver.manage().window().maximize();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
-        return driver;
+        return driverPool.get();
     }
 
     /**
      * closing driver
      * @author anna
      */
-
     public static void closeDriver(){
-        if(driver !=null){
-            driver.quit();
-            driver = null;
+        if(driverPool.get() !=null){
+            driverPool.get().quit();
+            //driver = null;
+            driverPool.remove();
         }
     }
 }

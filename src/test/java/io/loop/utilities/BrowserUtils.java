@@ -113,7 +113,7 @@ public class BrowserUtils {
     /**
      * Moves the mouse to given element
      * @param element on which to hover
-     * @author nadir
+     * @author anna
      */
     public static void hover(WebElement element){
         Actions actions = new Actions(Driver.getDriver());
@@ -124,7 +124,7 @@ public class BrowserUtils {
     /**
      * Scrolls down to an element using JavaScript
      * @param element
-     * @author nadir
+     * @author anna
      */
     public static void scrollToElement(WebElement element){
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -133,7 +133,7 @@ public class BrowserUtils {
     /**
      * Clicks on an element using JavaScript
      * @param element
-     * @author nadir
+     * @author anna
      */
     public static void clickWithJS(WebElement element){
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
@@ -143,7 +143,7 @@ public class BrowserUtils {
     /**
      * Performs double click action on an element
      * @param element
-     * @author nadir
+     * @author anna
      */
     public static void doubleClick(WebElement element){
         new Actions(Driver.getDriver()).doubleClick(element).perform();
@@ -154,7 +154,7 @@ public class BrowserUtils {
      * @param element
      * @param timeToWaitInSec
      * @return
-     * @author nadir
+     * @author anna
      */
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
@@ -165,7 +165,7 @@ public class BrowserUtils {
      * Waits for the provided element to be invisible on the page
      * @param element
      * @param timeToWaitInSec
-     * @author nadir
+     * @author anna
      */
     public static void waitForInVisibility(WebElement element, int timeToWaitInSec){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeToWaitInSec));
@@ -178,7 +178,7 @@ public class BrowserUtils {
      * @param element
      * @param timeout
      * @return
-     * @author nadir
+     * @author anna
      */
     public static WebElement waitForClickable (WebElement element, int timeout){
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
@@ -188,7 +188,7 @@ public class BrowserUtils {
     /**
      * performs a pause
      * @param seconds
-     * @author nadir
+     * @author anna
      */
     public static void justWait (int seconds){
         try{
