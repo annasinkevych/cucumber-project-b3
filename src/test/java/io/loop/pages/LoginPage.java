@@ -3,11 +3,12 @@ package io.loop.pages;
 import io.loop.utilities.BrowserUtils;
 import io.loop.utilities.DocuportConstants;
 import io.loop.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage extends DocuportBasePage{
 
     //this is our POM - Project Object Model design pattern
     public LoginPage(){
@@ -26,6 +27,7 @@ public class LoginPage {
     @FindBy(xpath = "//button[@type='submit']//span")
     public WebElement submitButton;
 
+
     /**
      *
      * @param username
@@ -39,12 +41,20 @@ public class LoginPage {
         passwordInput.clear();
         passwordInput.sendKeys(password);
         loginButton.click();
-        if(BrowserUtils.waitForVisibility(submitButton, DocuportConstants.small).isDisplayed());
-        {
-            submitButton.click();
-        }
+//        if(BrowserUtils.waitForVisibility(submitButton, DocuportConstants.small).isDisplayed());
+//        {
+//            submitButton.click();
+//        }
 
 
     }
-
+    public String getElementText(String text) {
+        try {
+            String xpath = "//*[normalize-space()='" + text + "']";
+            return Driver.getDriver().findElement(By.xpath(xpath)).getText();
+        }
+        catch (Exception e){
+            return "no such button";
+        }
+    }
 }

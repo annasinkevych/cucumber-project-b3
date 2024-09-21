@@ -1,7 +1,6 @@
-@smoke
 Feature: Scenario outline Google Search practice
-
-  @googleSearchOutline
+#@B3G3-160 --> Test Plan   #added for connecting Jira Xray -- to show our test results in Jira Xray
+  @googleSearchOutline @B3G3-161 @B3G3-169
   Scenario Outline: Google search for capital cities
     Given user is on Google search page
     When user search for the "<country>"
@@ -16,5 +15,3 @@ Feature: Scenario outline Google Search practice
       | Turkiye     | Ankara           |
       | Uzbekistan  | Tashkent         |
 
-
-    #Washington, D.C.
